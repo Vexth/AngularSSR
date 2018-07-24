@@ -54,6 +54,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 	}
 
 	token(): Observable<any> {
-		return this.http.get(encodeURI(`http://localhost:3355/skipper`));
+		return this.http.get(encodeURI(`http://localhost:8100/skipper`));
 	}
 }

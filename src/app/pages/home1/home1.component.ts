@@ -14,12 +14,12 @@ export class Home1Component implements OnInit {
 
   ngOnInit() {
     this.test('').subscribe((data: any) => {
-      this.str = data.Token;
+      this.str = data.Data;
     })
   }
 
   test(data): Observable<any> {
-    return this.http.post(encodeURI(`http://localhost:3355/test`), data);
+    return this.http.post(encodeURI(`http://localhost:8100/test`), data);
   }
 
 }
