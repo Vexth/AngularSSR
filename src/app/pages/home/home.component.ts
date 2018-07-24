@@ -30,6 +30,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 				this.state.set(KFCLIST_KEY, this.kfcList as any);
 			});
 		}
+
+		this.token().subscribe((data: any) => {
+			let s: string = data.Token
+			localStorage.setItem('token', s)
+		})
 	}
 
 	ngOnDestroy() {
@@ -41,13 +46,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 	query() {
 		this.keyword = this.keyword === '肯德基' ? '麦当劳' : '肯德基';
-		this.poiSearch(this.keyword, '南昌市').subscribe((data: any) => {
-			console.log(data)
-			this.kfcList = data.pois;
-		});
+		this.poiSearch(this.keyword, '南昌市').subscribe((data: any) => this.kfcList = data.pois, (err: any) => console.log(err));
 	}
 
 	poiSearch(text: string, city?: string): Observable<any> {
 		return this.http.get(encodeURI(`http://restapi.amap.com/v3/place/text?keywords=${text}&city=${city}&offset=20&key=55f909211b9950837fba2c71d0488db9&extensions=all`));
+	}
+
+	token(): Observable<any> {
+		return this.http.get(encodeURI(`http://localhost:3355/skipper`));
 	}
 }

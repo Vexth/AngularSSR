@@ -1,16 +1,17 @@
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { APP_ID, Inject, NgModule, PLATFORM_ID } from '@angular/core';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { isPlatformBrowser } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { Home1Component } from './pages/home1/home1.component';
 
 import { NavComponent } from './pages/nav/nav.component';
 
 import { AppRoutingModule } from './app.routes';
+
+import { ServerInterceptor } from './services/server.interceptor';
 
 @NgModule({
 	imports: [
@@ -23,10 +24,13 @@ import { AppRoutingModule } from './app.routes';
 	declarations: [
 		AppComponent,
 		HomeComponent,
-		Home1Component,
 		NavComponent
 	],
-	providers: [],
+	providers: [{
+		provide: HTTP_INTERCEPTORS,
+    useClass: ServerInterceptor,
+    multi: true
+	}],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
