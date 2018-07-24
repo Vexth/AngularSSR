@@ -4,6 +4,8 @@ Angular服务的渲染简单的实例
 
 增加访问权限控制器[server.interceptor.ts](https://github.com/Vexth/AngularSSR/blob/master/src/app/services/server.interceptor.ts)
 
+`http://localhost:8100/` 接口直接修改
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
