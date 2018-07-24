@@ -2,7 +2,7 @@
 
 Angular服务的渲染简单的实例
 
-增加访问权限控制器[server.interceptor.ts]()
+增加访问权限控制器[server.interceptor.ts](https://github.com/Vexth/AngularSSR/blob/master/src/app/services/server.interceptor.ts)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
